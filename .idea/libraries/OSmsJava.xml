@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="untitled">
+  <library name="OSmsJava">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/untitled.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/OSmsJava.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

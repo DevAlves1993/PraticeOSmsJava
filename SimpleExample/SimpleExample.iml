@@ -8,6 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="io.reactivex:rxjava:1.1.0" level="project" />
-    <orderEntry type="library" name="untitled" level="project" />
+    <orderEntry type="library" name="OSmsJava" level="project" />
   </component>
 </module>
