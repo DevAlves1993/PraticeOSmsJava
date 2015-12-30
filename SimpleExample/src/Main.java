@@ -19,7 +19,7 @@ public class Main
         String id = "****" ; // your orange id
         String secretCode = "**********"; // your orange secret code
         GenerateService service = null;
-        Token token = null;
+        Token token;
         ResponseSMS responseSMS = null;
         RemainderSMS remainderSMS = null;
         StatisticSMS statisticSMS = null;
@@ -67,7 +67,7 @@ public class Main
                 PartnerStatistics partnerStatistics = statisticSMS.getPartnerStatistics();
                 String partnerId = partnerStatistics.getPartnerId();
                 PartnerStatistics.Statistics[] statistics = partnerStatistics.getStatistics();
-                String serviceStat = null;
+                String serviceStat;
                 for(PartnerStatistics.Statistics statistic: statistics)
                 {
                     serviceStat = statistic.getService();
@@ -78,9 +78,15 @@ public class Main
                     {
                         String country = serviceStatistic.getCountry();
                         ServiceStatistics.CountryStatistics[] countryStatistics = serviceStatistic.getCountyStatistics();
+                        String applicationId;
+                        String usage;
                         for(ServiceStatistics.CountryStatistics countryStatistic: countryStatistics)
                         {
-
+                            applicationId = countryStatistic.getApplicationId();
+                            usage =    countryStatistic.getUsage();
+                            System.out.println("The country is "+country+".\n"
+                                    +"The application id is "+applicationId+".\n"
+                                    +"The usage of application is "+usage);
                         }
                     }
                 }
@@ -94,14 +100,14 @@ public class Main
         String partnerId = partnerContracts.getPartnerId();
         PartnerContracts.Contract[] contracts = partnerContracts.getContracts();
         //
-        String partnerService = null;
-        String description = null;
-        String country = null;
-        String expiration = null;
-        String contractService = null;
-        String serviceDescription = null;
-        String contractId = null;
-        String availableUnit = null;
+        String partnerService;
+        String description;
+        String country;
+        String expiration;
+        String contractService;
+        String serviceDescription;
+        String contractId;
+        String availableUnit;
 
         //
         for(PartnerContracts.Contract contract: contracts)
