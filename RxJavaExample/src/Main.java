@@ -102,7 +102,7 @@ public class Main
                 .subscribe(s -> System.out.println(s));
                 
     }
-    public static void showCountryStatistics(StatisticSMS statisticSMS)
+    public static void showListCountryStatistics(StatisticSMS statisticSMS)
     {
         Observable.just(statisticSMS)
                 .map(statisticSMS1 -> statisticSMS1.getPartnerStatistics())
@@ -113,10 +113,16 @@ public class Main
                 .subscribe(s -> System.out.println(s));
     }
 
-    public static void showIvoryCoastStatistic(StatisticSMS statisticSMS)
+    public static void showUsageCountryStatistics(StatisticSMS statisticSMS,String country)
     {
-
-
+        Observable.just(statisticSMS)
+                .map(statisticSMS1 -> statisticSMS1.getPartnerStatistics())
+                .flatMap(partnerStatistics -> Observable.from(partnerStatistics.getStatistics()))
+                .flatMap(statistics -> Observable.from(statistics.getServiceStatistics()))
+                .filter(serviceStatistics -> serviceStatistics.getCountry().equals(country))
+                .flatMap(serviceStatistics1 -> Observable.from(serviceStatistics1.getCountyStatistics()))
+                .map(countryStatistics -> countryStatistics.getUsage())
+                .subscribe(s -> System.out.println(s));
     }
 
     public static ResponseSMS sendSMS(GenerateService service,Token token, SMSHeader smsHeader) throws IOException, ServiceException
